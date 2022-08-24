@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+}
+
+.wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+    flex-direction: column;
+    gap: 3em;
+}
+
+.perfil {
+    position: relative;
+    background-color: aqua;
+}
+
+.img-marco {
+    position: absolute;
+    z-index: 1;
+    width: 400px;
+    height: 400px;
+}
+
+.img-perfil {
+    width: 400px;
+    height: 400px;
+    z-index: -1;
+}

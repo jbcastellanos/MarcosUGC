@@ -1,0 +1,97 @@
+.wrapp{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+#preview{
+    width: 400px;
+    height: 400px;
+}
+
+.joinImage {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.img-marco {
+    position: absolute;
+    z-index: 1;
+    width: 400px;
+    height: 400px;
+}
+
+.img-perfil {
+    width: 400px;
+    height: 400px;
+    z-index: -1;
+}
+
+h1{
+    text-align: center;
+    font-family:'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+input{
+    width: 40em;
+}
+
+.file-select {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .file-select::before {
+    background-color: #5678EF;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  
+  .file-select input[type="file"] {
+    opacity: 0;
+    width: 200px;
+    height: 32px;
+    display: inline-block;
+  }
+  
+  #src-file1::before {
+    content: 'Selecciona una imagen';
+  }
+
+  .btn-descargar{
+    position: absolute;
+    background-color: #4561c5;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    padding: .7em 1em;
+    border: 0px solid;
+    bottom: -4em;
+  }
+
+  .pre-vi{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+
+  #editor{
+    padding: 1em;
+  }

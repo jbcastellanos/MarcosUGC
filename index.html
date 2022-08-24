@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/gh/jamesssooi/Croppr.js@2.3.0/dist/croppr.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/jamesssooi/Croppr.js@2.3.0/dist/croppr.min.css" rel="stylesheet" />
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./main.js"></script>
+    <title>Aplicación Marcos</title>
+</head>
+
+<body>
+
+    <h1>Añade a tus fotos el marco que más te guste!</h1>
+
+    <div class="wrapp">
+        <!-- Input file donde se adjunta la imagen -->
+        <div class="file-select" id="src-file1">
+            <input type="file" id="image" class="custom-file-input" name="src-file1" aria-label="Archivo">
+        </div>
+        <div class="pre-vi">
+            <!-- Recortar y enfocar -->
+            <div id="editor"></div>
+
+            <!-- Visualizar con marco y descargar-->
+            <div class="joinImage" id="htmltoimage">
+                <img class="img-marco" id="myImage" src="../marco_0.png" alt="">
+                <canvas class="img-perfil" id="preview"></canvas>
+                <button onclick="downloadimage()" class="clickbtn btn-descargar">Descargar</button>
+            </div>
+        </div>
+        <hr>
+        <hr>
+        <button onclick="document.getElementById('myImage').src='../marco_1.png'">Cambiar Marco</button>
+        <button onclick="document.getElementById('myImage').src='../marco_2.png'">Cambiar Marco</button>
+    </div>
+</body>
+
+</html>
