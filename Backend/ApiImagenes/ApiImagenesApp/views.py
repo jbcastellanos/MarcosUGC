@@ -29,7 +29,7 @@ class MarcoViewSet(viewsets.ModelViewSet):
     queryset = Marco.objects.all()
     serializer_class = MarcoSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
-    filterset_fields = ['nombre']
+    filterset_fields = ['nombre', 'persona__id', 'persona__nombre', 'evento', 'fecha']
     search_fields = ['nombre', 'persona__id', 'persona__nombre', 'evento', 'fecha']
     parser_classes = (MultiPartParser, FormParser)
     # permission_classes = [permissions.IsAuthenticated]
