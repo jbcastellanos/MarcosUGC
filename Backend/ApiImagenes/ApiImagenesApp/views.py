@@ -2,9 +2,9 @@
 import re
 from django.contrib.auth.models import User, Group
 from .models import Persona, Marco
-from rest_framework import viewsets
-from rest_framework import permissions
+from rest_framework import viewsets, permissions, filters
 from rest_framework.parsers import MultiPartParser, FormParser
+from django_filters.rest_framework import DjangoFilterBackend
 from ApiImagenesApp.serializers import UserSerializer, GroupSerializer, MarcoSerializer, PersonaSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -28,6 +28,9 @@ class PersonaViewSet(viewsets.ModelViewSet):
 class MarcoViewSet(viewsets.ModelViewSet):
     queryset = Marco.objects.all()
     serializer_class = MarcoSerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    filterset_fields = ['nombre']
+    search_fields = ['nombre', 'persona__id', 'persona__nombre', 'evento', 'fecha']
     parser_classes = (MultiPartParser, FormParser)
     # permission_classes = [permissions.IsAuthenticated]
 
