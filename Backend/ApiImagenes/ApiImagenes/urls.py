@@ -9,6 +9,8 @@ from ApiImagenesApp import views
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
+router.register(r'marcos', views.MarcoViewSet)
+router.register(r'personas', views.PersonaViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
