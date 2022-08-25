@@ -39,13 +39,13 @@ class MarcoSerializer(serializers.ModelSerializer):
     #         fields = ['id', 'nombre']
     #         # fields = '__all__'
 
-    personaID = PersonaSerializer(many=False, read_only=True)
-    personaID.Meta.fields = ['id', 'nombre']
+    persona = PersonaSerializer(many=False, read_only=True)
+    persona.Meta.fields = ['nombre']
     
     fecha = serializers.DateField(read_only=True)
 
     class Meta:
         model = Marco
-        fields = ['id', 'personaID', 'nombre', 'fecha', 'evento', 'imagen']
+        fields = ['id', 'persona', 'nombre', 'fecha', 'evento', 'imagen']
         # fields = '__all__'
 

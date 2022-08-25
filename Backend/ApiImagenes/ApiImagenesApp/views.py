@@ -1,4 +1,5 @@
 # from django.shortcuts import render
+import re
 from django.contrib.auth.models import User, Group
 from .models import Persona, Marco
 from rest_framework import viewsets
@@ -28,4 +29,13 @@ class MarcoViewSet(viewsets.ModelViewSet):
     queryset = Marco.objects.all()
     serializer_class = MarcoSerializer
     parser_classes = (MultiPartParser, FormParser)
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
+
+    def create(self, request):
+        # request.data.persona = 1
+        # print(request.data)
+        return super().create(request)
+    
+    def perform_create(self, serializer):
+        persona = Persona.objects.get(user=self.request.user)
+        serializer.save(persona=persona)
