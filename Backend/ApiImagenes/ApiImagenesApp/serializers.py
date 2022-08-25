@@ -4,6 +4,23 @@ from django.contrib.auth.models import User, Group
 from .models import Persona, Marco
 from rest_framework import serializers
 
+
+class DynamicFieldSerializer(serializers.ModelSerializer):
+    def __init__(self, *args, **kwargs):
+        # Don't pass the 'fields' arg up to the superclass
+        fields = kwargs.pop('fields', None)
+
+        # Instantiate the superclass normally
+        super().__init__(*args, **kwargs)
+
+        if fields is not None:
+            # Drop any fields that are not specified in the `fields` argument.
+            allowed = set(fields)
+            existing = set(self.fields)
+            for field_name in existing - allowed:
+                self.fields.pop(field_name)
+
+
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
@@ -16,7 +33,8 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['url', 'name',]
 
 
-class PersonaSerializer(serializers.ModelSerializer):
+class PersonaSerializer(DynamicFieldSerializer):
+
     class Meta:
         model = Persona
         # fields = ['id', 'persona', 'personaID', 'nombre', 'evento', 'imagen']
@@ -39,8 +57,8 @@ class MarcoSerializer(serializers.ModelSerializer):
     #         fields = ['id', 'nombre']
     #         # fields = '__all__'
 
-    persona = PersonaSerializer(many=False, read_only=True)
-    persona.Meta.fields = ['nombre']
+    persona = PersonaSerializer(many=False, read_only=True, fields=["nombre"])
+    # persona.Meta.fields = ['nombre']
     
     fecha = serializers.DateField(read_only=True)
 
@@ -48,4 +66,13 @@ class MarcoSerializer(serializers.ModelSerializer):
         model = Marco
         fields = ['id', 'persona', 'nombre', 'fecha', 'evento', 'imagen']
         # fields = '__all__'
+    
 
+class MarcoSerializerCreate(serializers.ModelSerializer):
+    
+    fecha = serializers.DateField(read_only=True)
+
+    class Meta:
+        model = Marco
+        fields = ['id', 'persona', 'nombre', 'fecha', 'evento', 'imagen']
+        # fields = '__all__'

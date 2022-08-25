@@ -5,7 +5,7 @@ from .models import Persona, Marco
 from rest_framework import viewsets, permissions, filters
 from rest_framework.parsers import MultiPartParser, FormParser
 from django_filters.rest_framework import DjangoFilterBackend
-from ApiImagenesApp.serializers import UserSerializer, GroupSerializer, MarcoSerializer, PersonaSerializer
+from ApiImagenesApp.serializers import UserSerializer, GroupSerializer, MarcoSerializer, MarcoSerializerCreate, PersonaSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
@@ -43,3 +43,9 @@ class MarcoViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         persona = Persona.objects.get(user=self.request.user)
         serializer.save(persona=persona)
+
+    # def get_serializer_class(self):
+    #     if self.action == 'create':
+    #         return MarcoSerializerCreate
+        
+    #     return MarcoSerializer
