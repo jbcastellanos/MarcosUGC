@@ -10,29 +10,27 @@
 </head>
 
 <body>
-
-    <h1>Añade a tus fotos el marco que más te guste!</h1>
-
-    <div class="wrapp">
-        <!-- Input file donde se adjunta la imagen -->
-        <div class="file-select" id="src-file1">
-            <input type="file" id="image" class="custom-file-input" name="src-file1" aria-label="Archivo">
+    <div class="main-content">
+        <div class="edicion">
+            <h1>Añade a tus fotos el marco que más te guste!</h1>
+            <div class="seleccion-recorte">
+                <div id="editor"></div>
+                <!-- Input file donde se adjunta la imagen -->
+                <div class="file-select" id="src-file1">
+                    <input type="file" id="image" class="custom-file-input" name="src-file1" aria-label="Archivo">
+                </div>
+            </div>
         </div>
-        <div class="pre-vi">
-            <!-- Recortar y enfocar -->
-            <div id="editor"></div>
-
-            <!-- Visualizar con marco y descargar-->
+        <div class="sidebar">
+            <!-- Visualizar-cambiar marco y descargar-->
             <div class="joinImage" id="htmltoimage">
                 <img class="img-marco" id="myImage" src="/Frontend/src/marco_0.png" alt="">
                 <canvas class="img-perfil" id="preview"></canvas>
                 <button onclick="downloadimage()" class="clickbtn btn-descargar">Descargar</button>
             </div>
+            <button onclick="document.getElementById('myImage').src='/Frontend/src/marco_1.png'">Cambiar Marco</button>
+            <button onclick="document.getElementById('myImage').src='/Frontend/src/marco_2.png'">Cambiar Marco</button>
         </div>
-        <hr>
-        <hr>
-        <button onclick="document.getElementById('myImage').src='/Frontend/src/marco_1.png'">Cambiar Marco</button>
-        <button onclick="document.getElementById('myImage').src='/Frontend/src/marco_2.png'">Cambiar Marco</button>
     </div>
 </body>
 
