@@ -4,8 +4,13 @@
     <script src="https://cdn.jsdelivr.net/gh/jamesssooi/Croppr.js@2.3.0/dist/croppr.min.js"></script>
     <link href="https://cdn.jsdelivr.net/gh/jamesssooi/Croppr.js@2.3.0/dist/croppr.min.css" rel="stylesheet" />
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    
     <link rel="stylesheet" href="./style.css">
     <script src="./main.js"></script>
+    <script src="./axios.js"></script>
+    <script src="./node_modules/axios/index.js">
+        
+    </script>
     <title>Aplicación Marcos</title>
 </head>
 
@@ -30,8 +35,8 @@
             </div>
             <button onclick="document.getElementById('myImage').src='/Frontend/src/marco_1.png'">Cambiar Marco</button>
             <button onclick="document.getElementById('myImage').src='/Frontend/src/marco_2.png'">Cambiar Marco</button>
+            <button onclick="obtenerMarcos()" id="boton">Cambiar Marco</button>
         </div>
     </div>
 </body>
-
 </html>
