@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // Input File
@@ -63,12 +64,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // Proporciona la imagen cruda, sin editarla por ahora
         miNuevaImagenTemp.src = urlImage;
     }
+    
 });
 
 function downloadimage() {
     /*var container = document.getElementById("image-wrap");*/ /*specific element on page*/
     var container = document.getElementById("htmltoimage");; /* full page */
-    html2canvas(container, { allowTaint: true }).then(function (canvas) {
+    html2canvas(container, { allowTaint: false }).then(function (canvas) {
 
         var link = document.createElement("a");
         document.body.appendChild(link);
@@ -78,3 +80,5 @@ function downloadimage() {
         link.click();
     });
 }
+
+
