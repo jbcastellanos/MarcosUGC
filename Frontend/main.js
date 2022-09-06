@@ -69,10 +69,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function downloadimage() {
     /*var container = document.getElementById("image-wrap");*/ /*specific element on page*/
-    var container = document.getElementById("htmltoimage");; /* full page */
-    html2canvas(container, { allowTaint: false }).then(function (canvas) {
+    var container = document.getElementById("image-wrap");; /* full page */
+    html2canvas(container, { allowTaint: true, scale: 1, }).then(function (canvas) {
 
-        var link = document.createElement("a");
+        let link = document.createElement("a");
         document.body.appendChild(link);
         link.download = "Imagen_ugc.jpg";
         link.href = canvas.toDataURL();
@@ -80,5 +80,4 @@ function downloadimage() {
         link.click();
     });
 }
-
 
