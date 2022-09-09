@@ -27,6 +27,9 @@ body {
   padding: 1em 0 1em 0;
   border-bottom: 40px solid rgba(53, 151, 61, 1);
   min-height: 850;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+
 }
 
 .titulo {
@@ -167,22 +170,17 @@ body {
   /* padding-top: 2em; */
 }
 
-.icon-size{
+.icon-size {
   color: white;
 }
 
-.icon-btn{
+.icon-btn {
   border: 2px solid black;
-  background-color:#000000;
+  background-color: #000000;
 }
 
 
-
 @media only screen and (min-width: 400px) {
-  /* #icon-btn {
-    width: 7em;
-    height: 7em;
-  } */
 
   .img_get_marco {
     width: 200px;
@@ -198,14 +196,22 @@ body {
     grid-column-gap: 0px;
     grid-row-gap: 0px;
   }
-  .header{
+
+  .header {
     grid-area: 1 / 1 / 2 / 2;
     border-top: 1.5em solid rgba(53, 151, 61, 1);
-  }
-  .header > h1{
-    font-size: 2em;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin: 0;
     padding: 0;
   }
+
+  .header>h1 {
+    font-size: 1.5em;
+    padding: 0;
+  }
+
   .edicion {
     grid-area: 1 / 2 / 3 / 3;
     display: flex;
@@ -219,46 +225,54 @@ body {
     border-bottom: 1.5em solid rgba(53, 151, 61, 1);
     min-height: auto;
     gap: 1em;
+    margin: 0%;
   }
 
-  #imagesMosaic{
+  #imagesMosaic {
     padding: 0em 2em;
   }
+
   .croppr-image {
     max-height: 80vh;
   }
+
   .img_get_marco {
     width: 150px;
     height: 150px;
   }
-  .icon-size{
+
+  .icon-size {
     width: 2em;
     color: white;
   }
- .icon-btn{
+
+  .icon-btn {
     width: 5em;
     height: 5em;
     border: 2px solid black;
-    background-color:#000000;
+    background-color: #000000;
   }
-  
+
 }
 
 
 @media only screen and (max-height: 1000px) {
-  #imagesMosaic{
+  #imagesMosaic {
     padding: 0 1em;
   }
-  .icon-size{
+
+  .icon-size {
     width: 1.5em;
     color: white;
   }
- .icon-btn{
+
+  .icon-btn {
     width: 4em;
     height: 4em;
     border: 2px solid black;
-    background-color:#000000;
+    background-color: #000000;
   }
+
   .img_get_marco {
     width: 120px;
     height: 120px;
@@ -268,13 +282,13 @@ body {
     width: 300px;
     height: 300px;
   }
-  
+
   .img-marco {
     width: 300px;
     height: 300px;
     /* border-radius: 50%; */
   }
-  
+
   .img-perfil {
     width: 300px;
     height: 300px;

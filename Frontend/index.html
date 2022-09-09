@@ -9,7 +9,8 @@
     <script src="./axios.js"></script>
     <script src="./main.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
     </script>
@@ -24,15 +25,20 @@
         </div>
 
         <div class="edicion">
-
-            <div class="file-select" id="src-file1">
-                <input type="file" id="image" class="custom-file-input" name="src-file1" aria-label="Archivo">
-            </div>
+            <h4 class="mt-2">Añade el marco de desees a tus fotos</h4>
             <div class="seleccion-recorte">
                 <!-- Input file donde se adjunta la imagen -->
                 <div id="editor"></div>
             </div>
+            <div class="input-group w-50 mb-3">
+                <div class="custom-file ">
+                    <input type="file" class="custom-file-input" id="image">
+                    <label class="custom-file-label label-color" for="inputGroupFile01">Sube una Imagen</label>
+                </div>
+            </div>
+
         </div>
+
 
 
         <div class="sidebar">
@@ -42,6 +48,15 @@
                 <canvas class="img-perfil" id="preview"></canvas>
             </div>
             <div id="imagesMosaic"></div>
+            <nav aria-label="...">
+                <ul class="pagination pagination-sm">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">1</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                </ul>
+            </nav>
             <div class="iconos-wrapp">
 
                 <button class="icon-btn" onclick="document.getElementById('myImage').innerHTML = ''">
@@ -73,6 +88,7 @@
             </div>
 
         </div>
+
     </div>
 </body>
 
