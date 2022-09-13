@@ -10,9 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    axios({
-        method: 'GET',
-        url: url_marcos
+    axios.get(url_marcos, {
+        crossDomain: true
     }).then(res => {
         // console.log(res.data)
         marcos = res.data.results;
@@ -22,13 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
             let marcoIMG = document.createElement('img')
             let btn = document.createElement('button')
             marcoIMG.setAttribute("class", "img_get_marco")
-            marcoIMG.setAttribute("src", marco.imagen)
+            marcoIMG.setAttribute("src", "data:image/png;base64," + marco.imagen)
             btn.setAttribute("class", "btn_get_marco")
             // btn.setAttribute('onclick', "document.getElementById('myImage').src='" + marco.imagen + "'");
             btn.onclick = () => {
                 document.getElementById('myImage').src = "marco.imagen";
+                console.log("data:image/png;base64," + marco.imagen);
                 let img = new Image,
-                    src = marco.imagen; // insert image url here
+                    src = "data:image/png;base64," + marco.imagen; // insert image url here
 
                 img.crossOrigin = "anonymous";
                 img.onload = function () {

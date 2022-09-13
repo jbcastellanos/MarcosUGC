@@ -33,7 +33,7 @@ class MarcoViewSet(viewsets.ModelViewSet):
     search_fields = ['nombre', 'persona__id', 'persona__nombre', 'evento', 'fecha']
     ordering_fields = ['nombre', 'persona__id', 'persona__nombre', 'evento', 'fecha']
     parser_classes = (MultiPartParser, FormParser)
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
 
     def create(self, request):
         # request.data.persona = 1

@@ -1,6 +1,9 @@
 from dataclasses import field
+from re import T
 from statistics import mode
 from django.contrib.auth.models import User, Group
+from django.core.files import File
+from drf_extra_fields.fields import Base64ImageField
 from .models import Persona, Marco
 from rest_framework import serializers
 
@@ -61,11 +64,19 @@ class MarcoSerializer(serializers.ModelSerializer):
     # persona.Meta.fields = ['nombre']
     
     fecha = serializers.DateField(read_only=True)
+    imagen = Base64ImageField(represent_in_base64=True)
 
     class Meta:
         model = Marco
         fields = ['id', 'persona', 'nombre', 'fecha', 'evento', 'imagen']
         # fields = '__all__'
+
+    # def get_imagen2(self, obj):
+    #     f = open(obj.imagen.path, 'rb')
+    #     image = File(f)
+    #     data = base64.b64encode(image.read())
+    #     f.close()
+    #     return data
     
 
 class MarcoSerializerCreate(serializers.ModelSerializer):
