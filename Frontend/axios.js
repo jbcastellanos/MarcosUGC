@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.setAttribute("class", "btn_get_marco")
             // btn.setAttribute('onclick', "document.getElementById('myImage').src='" + marco.imagen + "'");
             btn.onclick = () => {
-                document.getElementById('myImage').src = marco.imagen;
+                document.getElementById('myImage').src = "marco.imagen";
                 let img = new Image,
                     src = marco.imagen; // insert image url here
 

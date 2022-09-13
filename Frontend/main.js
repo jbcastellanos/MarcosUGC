@@ -81,7 +81,7 @@ function downloadimage() {
     // marco.setAttribute("style", "width: 500px; height:500px;")
     // marco.setAttribute("crossorigin","anonymous")
     // canvas2.setAttribute("style", "width: 500px; height:500px;")
-    html2canvas(container, { allowTaint: true, scale: 1, }).then(function (canvas) {
+    html2canvas(container, { allowTaint: true, scale: 4/3, }).then(function (canvas) {
 
         let link = document.createElement("a");
         document.body.appendChild(link);
@@ -96,3 +96,14 @@ function downloadimage() {
     });
 }
 
+jQuery.ajax({
+
+    url: 'http://localhost:8080/yourwebsite/servlet?img=' + document.getElementById(id).alt,
+    //data: myData,
+    type: 'GET',
+    crossDomain: true,
+    dataType: 'jsonp',
+   // success: function() { alert("Success"); },
+   // error: function() { alert('Failed!'); },
+   // beforeSend: setHeader
+});
