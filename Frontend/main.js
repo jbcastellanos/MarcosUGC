@@ -67,22 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
 });
 
-function downloadimage() {
+function downloadimagesmall() {
     var container = document.getElementById("image-wrap"); /*specific element on page*/
-    // let container = document.getElementById("image-wrap").cloneNode(true); /* full page */
-    // container.setAttribute("id", "descargable")
-    // document.body.appendChild(container);
-    // container.setAttribute("style", "width: 500px; height:500px;")
-    // console.log(container);
-    // console.log(container.childNodes);
-    // console.log(container.childNodes.item(3));
-    // let marco = container.childNodes.item(1)
-    // let canvas2 = container.childNodes.item(3)
-    // marco.setAttribute("style", "width: 500px; height:500px;")
-    // marco.setAttribute("crossorigin","anonymous")
-    // canvas2.setAttribute("style", "width: 500px; height:500px;")
-    html2canvas(container, { allowTaint: true, scale: 4/3, }).then(function (canvas) {
-
+   
+    html2canvas(container, { allowTaint: true, scale: 4/5, }).then(function (canvas) {
         let link = document.createElement("a");
         document.body.appendChild(link);
         // document.body.append(canvas)
@@ -92,18 +80,39 @@ function downloadimage() {
         // link.href = canvas.toDataURL('image/jpeg', 1.0);
         link.target = '_blank';
         link.click();
-        // document.body.removeChild(container)
     });
 }
 
-jQuery.ajax({
+function downloadimagemedium() {
+    var container = document.getElementById("image-wrap"); /*specific element on page*/
+   
+    html2canvas(container, { allowTaint: true, scale: 4/3, }).then(function (canvas) {
+        let link = document.createElement("a");
+        document.body.appendChild(link);
+        // document.body.append(canvas)
+        link.download = "Imagen_ugc.jpg";
+        console.log(canvas.childNodes)
+        link.href = canvas.toDataURL();
+        // link.href = canvas.toDataURL('image/jpeg', 1.0);
+        link.target = '_blank';
+        link.click();
+    });
+}
 
-    url: 'http://localhost:8080/yourwebsite/servlet?img=' + document.getElementById(id).alt,
-    //data: myData,
-    type: 'GET',
-    crossDomain: true,
-    dataType: 'jsonp',
-   // success: function() { alert("Success"); },
-   // error: function() { alert('Failed!'); },
-   // beforeSend: setHeader
-});
+function downloadimagelarge() {
+    var container = document.getElementById("image-wrap"); /*specific element on page*/
+   
+    html2canvas(container, { allowTaint: true, scale: 1, }).then(function (canvas) {
+        let link = document.createElement("a");
+        document.body.appendChild(link);
+        // document.body.append(canvas)
+        link.download = "Imagen_ugc.jpg";
+        console.log(canvas.childNodes)
+        link.href = canvas.toDataURL();
+        // link.href = canvas.toDataURL('image/jpeg', 1.0);
+        link.target = '_blank';
+        link.click();
+    });
+}
+
+
