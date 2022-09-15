@@ -36,7 +36,7 @@ class MarcoViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_fields = ['nombre', 'persona__id', 'persona__nombre', 'evento', 'fecha']
     search_fields = ['nombre', 'persona__id', 'persona__nombre', 'evento', 'fecha']
-    ordering_fields = ['nombre', 'persona__id', 'persona__nombre', 'evento', 'fecha']
+    ordering_fields = ['id','nombre', 'persona__id', 'persona__nombre', 'evento', 'fecha']
     parser_classes = (MultiPartParser, FormParser)
     pagination_class= StandardResultsSetPagination
     permission_classes = [permissions.AllowAny]
