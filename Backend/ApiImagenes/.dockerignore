@@ -1,0 +1,6 @@
+
+env/*
+ApiImagenes/__pycache__/*
+ApiImagenes/__init__.py
+ApiImagenesApp/__pycache__/*
+ApiImagenesApp/migrations/* 
