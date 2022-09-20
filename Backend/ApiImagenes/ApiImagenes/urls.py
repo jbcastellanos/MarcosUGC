@@ -9,13 +9,17 @@ from ApiImagenesApp import views
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
+router.register(r'eventos', views.EventoViewSet)
+router.register(r'registros', views.RegistroViewSet)
 router.register(r'marcos', views.MarcoViewSet)
 router.register(r'personas', views.PersonaViewSet)
 
+baseUrl = "api/marcos/v1/"
+
 urlpatterns = [
-    path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', jwt_views.TokenRefreshView.as_view()),
-    path('admin/', admin.site.urls),
+    path(baseUrl + '', include(router.urls)),
+    path(baseUrl + 'api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path(baseUrl + 'api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path(baseUrl + 'api/token/refresh/', jwt_views.TokenRefreshView.as_view()),
+    path(baseUrl + 'admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

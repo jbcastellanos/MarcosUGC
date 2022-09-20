@@ -4,7 +4,7 @@ from statistics import mode
 from django.contrib.auth.models import User, Group
 from django.core.files import File
 from drf_extra_fields.fields import Base64ImageField
-from .models import Persona, Marco
+from .models import Persona, Marco, Evento, Registro
 from rest_framework import serializers
 
 
@@ -42,9 +42,27 @@ class PersonaSerializer(DynamicFieldSerializer):
         model = Persona
         # fields = ['id', 'persona', 'personaID', 'nombre', 'evento', 'imagen']
         fields = '__all__'
-        
 
-class MarcoSerializer(serializers.ModelSerializer):
+
+
+
+class EventoSerializer(DynamicFieldSerializer):
+    class Meta:
+        model = Evento
+        fields = '__all__'
+
+
+
+
+
+class RegistroSerializerCreate(DynamicFieldSerializer):
+    class Meta:
+        model = Registro
+        fields = '__all__'
+
+
+
+class MarcoSerializer(DynamicFieldSerializer):
 
     # personaNombre = serializers.CharField(source='personaID.nombre', read_only=True)
 
@@ -60,8 +78,10 @@ class MarcoSerializer(serializers.ModelSerializer):
     #         fields = ['id', 'nombre']
     #         # fields = '__all__'
 
-    persona = PersonaSerializer(many=False, read_only=True, fields=["nombre"])
+    persona = PersonaSerializer(many=False, read_only=True, fields=["id", "nombre"])
     # persona.Meta.fields = ['nombre']
+
+    evento = EventoSerializer(many=False, read_only=True, fields=["id", "nombre"])
     
     fecha = serializers.DateField(read_only=True)
     imagen = Base64ImageField(represent_in_base64=True)
@@ -79,6 +99,15 @@ class MarcoSerializer(serializers.ModelSerializer):
     #     return data
     
 
+class RegistroSerializer(DynamicFieldSerializer):
+
+    marco = MarcoSerializer(many=False, read_only=True, fields=["id", "nombre", "evento", "fecha"])
+    fecha = serializers.DateTimeField(read_only=True)
+
+    class Meta:
+        model = Registro
+        fields = '__all__'
+
 class MarcoSerializerCreate(serializers.ModelSerializer):
     
     fecha = serializers.DateField(read_only=True)
@@ -87,3 +116,7 @@ class MarcoSerializerCreate(serializers.ModelSerializer):
         model = Marco
         fields = ['id', 'persona', 'nombre', 'fecha', 'evento', 'imagen']
         # fields = '__all__'
+
+
+
+
