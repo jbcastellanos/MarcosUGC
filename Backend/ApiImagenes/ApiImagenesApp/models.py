@@ -63,5 +63,8 @@ class Registro(models.Model):
     fecha = models.DateTimeField(auto_now=True, blank=False, null=False)
     marco = models.ForeignKey('Marco', on_delete=models.DO_NOTHING, blank=False, null=False)
 
+    def __str__(self):
+        return str("{} - {}".format(self.marco.nombre, self.fecha, self.marco.nombre))
+
 
     
