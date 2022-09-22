@@ -19,8 +19,8 @@ body {
   display: grid;
   grid-template-rows: auto auto;
   padding: 2em;
-  background-color: #9e9e9e;
-  border-radius: 40px;
+  background-color: #D9D9D9;
+  border-radius: 20px;
   align-content: space-between;
 }
 
@@ -35,7 +35,7 @@ body {
   flex-direction: column;
   /* justify-content: space-evenly; */
   align-items: center;
-  background-color: #c3c9ca;
+  background-color: #FFF;
   height: fit-content;
   padding: 2em 0 1em 0;
 
@@ -103,7 +103,7 @@ body {
 }
 
 .file-select::before {
-  background-color: #679344;
+  background-color: #005400;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-weight: 500;
   color: rgb(255, 255, 255);
@@ -172,7 +172,8 @@ body {
   height: 120px;
   border-radius: 20px;
   background-color: transparent;
-  border: 5px solid rgb(7, 7, 29);
+  /* border: 5px solid rgb(7, 7, 29); */
+  border: 0;
 }
 
 #editor {
@@ -181,7 +182,7 @@ body {
 
 #imagesMosaic {
   display: flex;
-  background-color: #679344de;
+  background-color: #005400;
   grid-template-columns: 1fr 1fr 1fr;
   padding: 3em 2.5em;
   gap: 2em;
@@ -226,13 +227,16 @@ body {
 
 }
 
+.header > img {
+  width: 50vw;
+
+}
+
 .icon-size {
   color: white;
 }
-
-.icon-btn {
-  border: 2px solid black;
-  background-color: #000000;
+.icon-svg {
+  width: 6em;
 }
 
 .icon-btn-m, .icon-btn-l {
@@ -293,7 +297,7 @@ body {
     position: relative;
     grid-template-columns: 1fr 4fr;
     grid-template-rows: 0fr 1fr;
-    background-color: #768C6B;
+    background-color: #D9D9D9;
     padding: 0 3em;
     align-items: center;
   }
@@ -311,6 +315,10 @@ body {
     font-weight: 100;
     font-family: 'Carattere', serif;
     font-size: 2.5em;
+  }
+
+  .header > img {
+    width: 14vw;
   }
 
   .edicion {
@@ -373,8 +381,12 @@ body {
   .icon-btn {
     width: 4em;
     height: 4em;
-    border: 2px solid black;
-    background-color: #000000;
+    /* border: 2px solid black; */
+    /* background-color: #000000; */
+  }
+
+  .icon-svg {
+    width: 3em;
   }
 
   .icon-btn-s, .icon-btn-m {
@@ -402,8 +414,8 @@ body {
 
   .file-select::before {
     font-size: medium;
-    background-color: #D9D9D9;
-    color: #000000;
+    /* background-color: #D9D9D9; */
+    /* color: #000000; */
     border-radius: 10px;
   }
 

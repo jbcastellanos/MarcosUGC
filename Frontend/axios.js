@@ -1,7 +1,9 @@
 
 var pag = 1
 let marcos = [];
-var url_marcos = 'http://127.0.0.1:8000/marcos/?ordering=-id&page=' + pag + '&page_size=3';
+var url_marcos = 'http://127.0.0.1:8000/api/marcos/v1/marcos/?ordering=-id&page=' + pag + '&page_size=3';
+const APIPREFIX = 'http://127.0.0.1:8000/api/marcos/v1'
+let marcoSeleccionado = 0;
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -41,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.onclick = () => {
                 // document.getElementById('myImage').src = "marco.imagen";
                 // console.log("data:image/png;base64," + marco.imagen);
+                marcoSeleccionado = marco.id;
                 let img = new Image,
                     src = "data:image/png;base64," + marco.imagen; // insert image url here
 
@@ -73,7 +76,7 @@ function Next_page() {
     pag += 1;
     const btnRight = document.getElementById("btnRight")
     const btnLeft = document.getElementById("btnLeft")
-    var url_marcos = 'http://127.0.0.1:8000/marcos/?ordering=-id&page=' + pag + '&page_size=3';
+    var url_marcos = APIPREFIX + '/marcos/?ordering=-id&page=' + pag + '&page_size=3';
 
     if (pag >= pages) {
         btnRight.style.visibility = "hidden";
@@ -140,7 +143,7 @@ function Preview_page() {
     pag -= 1;
     const btnRight = document.getElementById("btnRight")
     const btnLeft = document.getElementById("btnLeft")
-    var url_marcos = 'http://127.0.0.1:8000/marcos/?ordering=-id&page=' + pag + '&page_size=3';
+    var url_marcos = APIPREFIX + '/marcos/?ordering=-id&page=' + pag + '&page_size=3';
 
     if (pag <= 1) {
         btnLeft.style.visibility = "hidden";

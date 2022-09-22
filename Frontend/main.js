@@ -1,3 +1,5 @@
+// import APIPREFIX from axios
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -13,10 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let urlImage = undefined;
     // Evento disparado cuando se adjunte una imagen
     inputImage.addEventListener('change', abrirEditor, false);
-
     /**
      * Método que abre el editor con la imagen seleccionada
      */
+
+
+
     function abrirEditor(e) {
         // Obtiene la imagen
         urlImage = URL.createObjectURL(e.target.files[0]);
@@ -67,7 +71,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
 });
 
-function downloadimagesmall() {
+function downloadimagesmall(event) {
+    event.preventDefault()
+
+    createRegistro(marcoSeleccionado)
+
     var container = document.getElementById("image-wrap"); /*specific element on page*/
    
     html2canvas(container, { allowTaint: true, scale: 4/5, }).then(function (canvas) {
@@ -83,7 +91,14 @@ function downloadimagesmall() {
     });
 }
 
-function downloadimagemedium() {
+
+
+
+function downloadimagemedium(event) {
+    event.preventDefault()
+        
+    createRegistro(marcoSeleccionado)
+
     var container = document.getElementById("image-wrap"); /*specific element on page*/
    
     html2canvas(container, { allowTaint: true, scale: 4/3, }).then(function (canvas) {
@@ -94,12 +109,17 @@ function downloadimagemedium() {
         console.log(canvas.childNodes)
         link.href = canvas.toDataURL();
         // link.href = canvas.toDataURL('image/jpeg', 1.0);
+        
         link.target = '_blank';
         link.click();
     });
 }
 
-function downloadimagelarge() {
+function downloadimagelarge(event) {
+    event.preventDefault()
+
+    createRegistro(marcoSeleccionado)
+
     var container = document.getElementById("image-wrap"); /*specific element on page*/
    
     html2canvas(container, { allowTaint: true, scale: 1, }).then(function (canvas) {
@@ -113,6 +133,32 @@ function downloadimagelarge() {
         link.target = '_blank';
         link.click();
     });
+}
+
+const createRegistro = (marcoId) => {
+    // axios.post('')
+    console.log(APIPREFIX);
+    console.log(marcoId);
+    const formData = new FormData();
+    formData.append('marco', marcoId);
+    axios.post(APIPREFIX + '/registros/',formData, {
+        responseType: 'json'
+    })
+    .then(response => {
+        console.log(response.data);
+        return null
+    })
+    .catch(error => {
+
+    })
+    // axios({
+    //     method: 'post',
+    //     url: APIPREFIX + '/registros/',
+    //     data: {
+    //         marco: marcoId
+    //     }
+    // })
+
 }
 
 
