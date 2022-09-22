@@ -76,11 +76,7 @@ function Next_page() {
     pag += 1;
     const btnRight = document.getElementById("btnRight")
     const btnLeft = document.getElementById("btnLeft")
-<<<<<<< HEAD
-    var url_marcos = 'http://127.0.0.1:8000/api/marcos/v1/marcos/?ordering=-id&page=' + pag + '&page_size=3';
-=======
     var url_marcos = APIPREFIX + '/marcos/?ordering=-id&page=' + pag + '&page_size=3';
->>>>>>> 869031582885f462539473340e97c7169bc9873b
 
     if (pag >= pages) {
         btnRight.style.visibility = "hidden";
