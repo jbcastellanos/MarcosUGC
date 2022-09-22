@@ -1,7 +1,7 @@
 
 var pag = 1
 let marcos = [];
-var url_marcos = 'http://127.0.0.1:8000/marcos/?ordering=-id&page=' + pag + '&page_size=3';
+var url_marcos = 'http://127.0.0.1:8000/api/marcos/v1/marcos/?ordering=-id&page=' + pag + '&page_size=3';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -73,7 +73,7 @@ function Next_page() {
     pag += 1;
     const btnRight = document.getElementById("btnRight")
     const btnLeft = document.getElementById("btnLeft")
-    var url_marcos = 'http://127.0.0.1:8000/marcos/?ordering=-id&page=' + pag + '&page_size=3';
+    var url_marcos = 'http://127.0.0.1:8000/api/marcos/v1/marcos/?ordering=-id&page=' + pag + '&page_size=3';
 
     if (pag >= pages) {
         btnRight.style.visibility = "hidden";
@@ -140,7 +140,7 @@ function Preview_page() {
     pag -= 1;
     const btnRight = document.getElementById("btnRight")
     const btnLeft = document.getElementById("btnLeft")
-    var url_marcos = 'http://127.0.0.1:8000/marcos/?ordering=-id&page=' + pag + '&page_size=3';
+    var url_marcos = 'http://127.0.0.1:8000/api/marcos/v1/marcos/?ordering=-id&page=' + pag + '&page_size=3';
 
     if (pag <= 1) {
         btnLeft.style.visibility = "hidden";
