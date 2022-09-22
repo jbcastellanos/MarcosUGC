@@ -74,8 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
 function downloadimagesmall(event) {
     event.preventDefault()
 
-    createRegistro(marcoSeleccionado)
-
     var container = document.getElementById("image-wrap"); /*specific element on page*/
    
     html2canvas(container, { allowTaint: true, scale: 4/5, }).then(function (canvas) {
@@ -88,6 +86,7 @@ function downloadimagesmall(event) {
         // link.href = canvas.toDataURL('image/jpeg', 1.0);
         link.target = '_blank';
         link.click();
+        createRegistro(marcoSeleccionado)
     });
 }
 
@@ -96,8 +95,6 @@ function downloadimagesmall(event) {
 
 function downloadimagemedium(event) {
     event.preventDefault()
-        
-    createRegistro(marcoSeleccionado)
 
     var container = document.getElementById("image-wrap"); /*specific element on page*/
    
@@ -112,13 +109,12 @@ function downloadimagemedium(event) {
         
         link.target = '_blank';
         link.click();
+        createRegistro(marcoSeleccionado)
     });
 }
 
 function downloadimagelarge(event) {
     event.preventDefault()
-
-    createRegistro(marcoSeleccionado)
 
     var container = document.getElementById("image-wrap"); /*specific element on page*/
    
@@ -132,6 +128,7 @@ function downloadimagelarge(event) {
         // link.href = canvas.toDataURL('image/jpeg', 1.0);
         link.target = '_blank';
         link.click();
+        createRegistro(marcoSeleccionado)
     });
 }
 
