@@ -37,7 +37,7 @@ class Marco(models.Model):
     def validate_image(fieldfile_obj):
         try:
             filesize = fieldfile_obj.file.size
-            megabyte_limit = 5.0
+            megabyte_limit = 1.0
             if filesize > megabyte_limit*430*430:
                 raise ValidationError("Max resolution size is %s" % str("400x400"))
         except AttributeError:

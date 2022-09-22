@@ -86,8 +86,11 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
+# CORS_ORIGIN_WHITELIST = [
+#     'http://127.0.0.1:5500'
+# ]
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ORIGIN_ALLOW_ALL=True
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases

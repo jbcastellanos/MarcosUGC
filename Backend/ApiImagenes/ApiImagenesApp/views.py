@@ -10,6 +10,19 @@ from ApiImagenesApp.pagination import StandardResultsSetPagination
 
 
 
+# permission_classes
+class IsCreateOnly(permissions.BasePermission):
+    def has_permission(self, request, view):
+        if (request.method in ["POST"]):
+            return True
+        try:
+            if(request.user and request.user.is_authenticated()):
+                return True
+        except :
+            pass
+        return False 
+
+
 class EventoViewSet(viewsets.ModelViewSet):
     queryset = Evento.objects.all().order_by('-id')
     serializer_class = EventoSerializer
@@ -18,12 +31,13 @@ class EventoViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
 
+
 class RegistroViewSet(viewsets.ModelViewSet):
     queryset = Registro.objects.all().order_by('-id')
     serializer_class = RegistroSerializerCreate
     pagination_class = StandardResultsSetPagination
     ordering_fields = ['id','nombre']
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated | IsCreateOnly]
 
 
     def get_serializer_class(self):
