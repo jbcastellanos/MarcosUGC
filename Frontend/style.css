@@ -255,6 +255,10 @@ body {
   display: none;
 }
 
+.texto-sidebar{
+  display: fel;
+}
+
 @media only screen and (min-width: 400px) {
 
   .img_get_marco {
@@ -269,15 +273,28 @@ body {
   .btn-indicator{
     display: none;
   }
-
-  .texto-sidebar > label{
+*/
+  .texto-sidebar>label {
     font-size: 2em;
     text-align: center;
-  } */
+  }
 
 }
 
 @media only screen and (min-width: 1000px) {
+  .texto-sidebar>label {
+    font-size: 1em;
+    text-align: center;
+  }
+  
+  .texto-sidebar{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
   .btn1 {
     display: flex;
     gap: 5px;
@@ -294,6 +311,7 @@ body {
   }
 
   .btn-indicator {
+    display: block;
     padding: .1em .55em;
     background-color: #005500;
     border: 0;
