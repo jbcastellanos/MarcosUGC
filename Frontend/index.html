@@ -13,18 +13,24 @@
     <script src="./axios.js"></script>
     <script src="./main.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    </script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Carattere">
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <title>UGC Marcos</title>
 </head>
 
 <body>
+
     <div class="main-wrap">
         <div class="main-content">
 
+            <a class="admin-label" href="">Admin</a>
             <!-- Header, recorte y edición -->
 
             <div class="header">
@@ -33,16 +39,29 @@
             </div>
 
             <div class="edicion">
-                <h2 class="m-4">Añade el marco que desees a tus fotos!</h2>
+                <h2 class="mt-4">Aquí podrás ajustar la foto seleccionada.</h2>
                 <div class="seleccion-recorte">
                     <!-- Input file donde se adjunta la imagen -->
                 </div>
-                <div class="input-image">
-                    <div class="file-select" id="image">
-                        <input type="file" name="src-file1" aria-label="Archivo" accept="image/*">
+                <div class="btn1">
+                    <div class="input-image" onclick="prueba()">
+                        <div class="file-select" id="image">
+                            <input type="file" name="src-file1" aria-label="Archivo">
+                        </div>
                     </div>
+                    <button type="button" class="btn-indicator" data-bs-toggle="tooltip" data-bs-placement="right"
+                        title="Sube una foto">
+                        <label>?</label>
+                    </button>
                 </div>
-                <div id="editor"></div>
+                <div class="btn1">
+                    <div id="editor"></div>
+                    <button id="btn-edicion" type="button" class="btn-indicator" data-bs-toggle="tooltip"
+                        data-bs-placement="right" title="Ajusta la fotografía al tamaño de tu preferencia">
+                        <label>?</label>
+                    </button>
+                </div>
+
             </div>
 
             <div class="sidebar">
@@ -52,7 +71,13 @@
                     <img class="img-marco" id="myImage" src="./src/marco_0.png" alt="">
                     <canvas class="img-perfil" id="preview"></canvas>
                 </div>
-
+                <div class="texto-sidebar">
+                    <label class="h6 mt-2 mb-2 mx-1">Elige el marco que desaeas usar.</label>
+                    <button type="button" class="btn-indicator" data-bs-toggle="tooltip" data-bs-placement="right"
+                        title="Intercambia de marco hasta que encuentres el indicado">
+                        <label>?</label>
+                    </button>
+                </div>
                 <!-- Slides de imagenes -->
                 <div class="wrapMosaic">
                     <button class="btn-izquierda" id="btnLeft" onclick="Preview_page()">
@@ -75,69 +100,45 @@
 
                 <!-- Eliminar, descargar y compartir -->
                 <div class="iconos-wrapp">
-                    
-                    <!-- botoón móvil -->
 
+                    <!-- botón móvil -->
                     <button class="icon-btn icon-btn-s" onclick="downloadimagesmall(event)" class="clickbtn">
-                        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
-                            class="bi bi-download icon-size" viewBox="0 0 16 16">
-                            <path
-                                d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                            <path
-                                d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
-                        </svg> -->
-                        <img class="icon-svg" src = "./src/descarga.svg" alt="trash icon"/>
+                        <img class="icon-svg" src="./src/descarga.svg" alt="trash icon" />
                     </button>
 
                     <!-- boton medio-->
-                    <button class="icon-btn icon-btn-m clickbtn" id="submitButton" onclick="return downloadimagemedium(event)">
-                        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
-                            class="bi bi-download icon-size" viewBox="0 0 16 16">
-                            <path
-                                d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                            <path
-                                d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
-                        </svg> -->
-                        <img class="icon-svg" src = "./src/descarga.svg" alt="trash icon"/>
+                    <button class="icon-btn icon-btn-m clickbtn" id="submitButton"
+                        onclick="return downloadimagemedium(event)">
+                        <img class="icon-svg" src="./src/descarga.svg" alt="trash icon" />
                     </button>
 
-                    <!-- boton x  -->
-
+                    <!-- boton Desktop-->
                     <button class="icon-btn icon-btn-l" onclick="downloadimagelarge(event)" class="clickbtn">
-                        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
-                            class="bi bi-download icon-size" viewBox="0 0 16 16">
-                            <path
-                                d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                            <path
-                                d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
-                        </svg> -->
-                        <img class="icon-svg" src = "./src/descarga.svg" alt="trash icon"/>
+                        <img class="icon-svg" src="./src/descarga.svg" alt="trash icon" />
                     </button>
 
+                    <button type="button" class="btn-indicator" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        title="Elige descargar o eliminar cuando ya hayas finalizado tus cambios">
+                        <label>?</label>
+                    </button>
+
+                    <!-- boton Download-->
                     <button class="icon-btn" onclick="location.reload()">
-                        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
-                            class="bi bi-trash3 icon-size" viewBox="0 0 16 16">
-                            <path
-                                d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
-                        </svg> -->
-                        <img class="icon-svg" src = "./src/trash.svg" alt="trash icon"/>
-
+                        <img class="icon-svg" src="./src/trash.svg" alt="trash icon" />
                     </button>
 
-<!-- 
-                    <button class="icon-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
-                            class="bi bi-share icon-size" viewBox="0 0 16 16">
-                            <path
-                                d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" />
-                        </svg>
-                    </button> -->
                 </div>
+
                 <img class="img-logo" src="./src/Logo_UGC.png" alt="">
             </div>
-
         </div>
     </div>
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
 </body>
 
 </html>

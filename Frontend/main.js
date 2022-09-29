@@ -2,7 +2,7 @@
 
 
 document.addEventListener('DOMContentLoaded', () => {
-
+    
     // Input File
     const inputImage = document.querySelector('#image');
     // Nodo donde estará el editor
@@ -43,6 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
             startSize: [70, 70],
             onCropEnd: recortarImagen
         })
+
+        document.getElementById('btn-edicion').style.display="block" ;
     }
 
     /**
@@ -68,15 +70,17 @@ document.addEventListener('DOMContentLoaded', () => {
         // Proporciona la imagen cruda, sin editarla por ahora
         miNuevaImagenTemp.src = urlImage;
     }
-    
+
 });
 
 function downloadimagesmall(event) {
     event.preventDefault()
 
+    createRegistro(marcoSeleccionado)
+
     var container = document.getElementById("image-wrap"); /*specific element on page*/
-   
-    html2canvas(container, { allowTaint: true, scale: 4/5, }).then(function (canvas) {
+
+    html2canvas(container, { allowTaint: true, scale: 4 / 5, }).then(function (canvas) {
         let link = document.createElement("a");
         document.body.appendChild(link);
         // document.body.append(canvas)
@@ -86,7 +90,6 @@ function downloadimagesmall(event) {
         // link.href = canvas.toDataURL('image/jpeg', 1.0);
         link.target = '_blank';
         link.click();
-        createRegistro(marcoSeleccionado)
     });
 }
 
@@ -96,9 +99,11 @@ function downloadimagesmall(event) {
 function downloadimagemedium(event) {
     event.preventDefault()
 
+    createRegistro(marcoSeleccionado)
+
     var container = document.getElementById("image-wrap"); /*specific element on page*/
-   
-    html2canvas(container, { allowTaint: true, scale: 4/3, }).then(function (canvas) {
+
+    html2canvas(container, { allowTaint: true, scale: 4 / 3, }).then(function (canvas) {
         let link = document.createElement("a");
         document.body.appendChild(link);
         // document.body.append(canvas)
@@ -106,18 +111,19 @@ function downloadimagemedium(event) {
         console.log(canvas.childNodes)
         link.href = canvas.toDataURL();
         // link.href = canvas.toDataURL('image/jpeg', 1.0);
-        
+
         link.target = '_blank';
         link.click();
-        createRegistro(marcoSeleccionado)
     });
 }
 
 function downloadimagelarge(event) {
     event.preventDefault()
 
+    createRegistro(marcoSeleccionado)
+
     var container = document.getElementById("image-wrap"); /*specific element on page*/
-   
+
     html2canvas(container, { allowTaint: true, scale: 1, }).then(function (canvas) {
         let link = document.createElement("a");
         document.body.appendChild(link);
@@ -128,7 +134,6 @@ function downloadimagelarge(event) {
         // link.href = canvas.toDataURL('image/jpeg', 1.0);
         link.target = '_blank';
         link.click();
-        createRegistro(marcoSeleccionado)
     });
 }
 
@@ -138,16 +143,16 @@ const createRegistro = (marcoId) => {
     console.log(marcoId);
     const formData = new FormData();
     formData.append('marco', marcoId);
-    axios.post(APIPREFIX + '/registros/',formData, {
+    axios.post(APIPREFIX + '/registros/', formData, {
         responseType: 'json'
     })
-    .then(response => {
-        console.log(response.data);
-        return null
-    })
-    .catch(error => {
+        .then(response => {
+            console.log(response.data);
+            return null
+        })
+        .catch(error => {
 
-    })
+        })
     // axios({
     //     method: 'post',
     //     url: APIPREFIX + '/registros/',
@@ -155,7 +160,5 @@ const createRegistro = (marcoId) => {
     //         marco: marcoId
     //     }
     // })
-
 }
-
 
