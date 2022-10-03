@@ -28,6 +28,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = ['http://unidaddesarrollo.ugc.edu.co', 
+                        'https://unidaddesarrollo.ugc.edu.co']
+
 
 # Application definition
 
@@ -90,15 +93,19 @@ REST_FRAMEWORK = {
 #     'http://127.0.0.1:5500'
 # ]
 
-CORS_ORIGIN_ALLOW_ALL=True
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.getenv("DB_NAME", None),
+        'USER': os.getenv("DB_USER", None),
+        'PASSWORD': os.getenv("DB_PASS", None),
+        'HOST': os.getenv("DB_HOST", None),
+        'PORT': os.getenv("DB_PORT", None),
     }
 }
 
@@ -143,6 +150,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'api/marcos/v1/static')
+# STATIC_ROOT = '/static/'
+STATIC_URL = '/api/marcos/v1/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
