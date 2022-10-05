@@ -1,3 +1,4 @@
+
 // import APIPREFIX from axios
 
 
@@ -73,10 +74,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-function downloadimagesmall(event) {
+async function downloadimagesmall(event) {
     event.preventDefault()
 
-    createRegistro(marcoSeleccionado)
+    // console.log(marcoSeleccionado);
+    await createRegistro(marcoSeleccionado)
 
     var container = document.getElementById("image-wrap"); /*specific element on page*/
 
@@ -85,21 +87,23 @@ function downloadimagesmall(event) {
         document.body.appendChild(link);
         // document.body.append(canvas)
         link.download = "Imagen_ugc.jpg";
-        console.log(canvas.childNodes)
+        // console.log(canvas.childNodes)
         link.href = canvas.toDataURL();
         // link.href = canvas.toDataURL('image/jpeg', 1.0);
         link.target = '_blank';
         link.click();
+        location.reload();
     });
 }
 
 
 
 
-function downloadimagemedium(event) {
+async function downloadimagemedium(event) {
     event.preventDefault()
 
-    createRegistro(marcoSeleccionado)
+    // console.log(marcoSeleccionado);
+    await createRegistro(marcoSeleccionado)
 
     var container = document.getElementById("image-wrap"); /*specific element on page*/
 
@@ -108,19 +112,20 @@ function downloadimagemedium(event) {
         document.body.appendChild(link);
         // document.body.append(canvas)
         link.download = "Imagen_ugc.jpg";
-        console.log(canvas.childNodes)
+        // console.log(canvas.childNodes)
         link.href = canvas.toDataURL();
         // link.href = canvas.toDataURL('image/jpeg', 1.0);
 
         link.target = '_blank';
         link.click();
+        location.reload();
     });
 }
 
-function downloadimagelarge(event) {
+async function downloadimagelarge(event) {
     event.preventDefault()
-
-    createRegistro(marcoSeleccionado)
+    // console.log(marcoSeleccionado);
+    await createRegistro(marcoSeleccionado)
 
     var container = document.getElementById("image-wrap"); /*specific element on page*/
 
@@ -129,25 +134,32 @@ function downloadimagelarge(event) {
         document.body.appendChild(link);
         // document.body.append(canvas)
         link.download = "Imagen_ugc.jpg";
-        console.log(canvas.childNodes)
+        // console.log(canvas.childNodes)
         link.href = canvas.toDataURL();
         // link.href = canvas.toDataURL('image/jpeg', 1.0);
         link.target = '_blank';
         link.click();
+        location.reload();
     });
 }
 
-const createRegistro = (marcoId) => {
+const createRegistro = async (marcoId) => {
     // axios.post('')
-    console.log(APIPREFIX);
-    console.log(marcoId);
+    // console.log(APIPREFIX);
+    // console.log(marcoId);
     const formData = new FormData();
     formData.append('marco', marcoId);
-    axios.post(APIPREFIX + '/registros/', formData, {
-        responseType: 'json'
+    axios.defaults.xsrfHeaderName = "X-CSRFTOKEN"
+    axios.defaults.xsrfCookieName = "csrftoken"
+    
+    await axios.post(APIPREFIX + '/registros/', formData, {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          }
     })
         .then(response => {
-            console.log(response.data);
+            // console.log(response.data);
             return null
         })
         .catch(error => {

@@ -30,7 +30,7 @@
     <div class="main-wrap">
         <div class="main-content">
 
-            <a class="admin-label" href="">Admin</a>
+            <!-- <a class="admin-label" href="/api/marcos/v1/admin">Admin</a> -->
             <img class="img-logo-experiencia" src="./src/logo_experiencia.png" alt="">
             <!-- Header, recorte y edición -->
 
@@ -57,7 +57,7 @@
                 </div>
                 <div class="btn1">
                     <div id="editor"></div>
-                    <button id="btn-edicion" type="button" class="btn-indicator" data-bs-toggle="tooltip"
+                    <button id="btn-edicion" type="button" class="btn-indicator btn-indicator-movil" data-bs-toggle="tooltip"
                         data-bs-placement="right" title="Ajusta la fotografía al tamaño de tu preferencia">
                         <label>?</label>
                     </button>
@@ -73,7 +73,7 @@
                     <canvas class="img-perfil" id="preview"></canvas>
                 </div>
                 <div class="texto-sidebar">
-                    <label class="h6 mt-2 mb-2 mx-1">Elige el marco que desaeas usar.</label>
+                    <label class="h6 mt-2 mb-2 mx-1">Elige el marco que deseas usar.</label>
                     <button type="button" class="btn-indicator" data-bs-toggle="tooltip" data-bs-placement="right"
                         title="Intercambia de marco hasta que encuentres el indicado">
                         <label>?</label>
@@ -82,17 +82,13 @@
                 <!-- Slides de imagenes -->
                 <div class="wrapMosaic">
                     <button class="btn-izquierda" id="btnLeft" onclick="Preview_page()">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
-                            class="bi bi-arrow-left-circle-fill icon-btn-mosaic" viewBox="0 0 16 16">
-                            <path
-                                d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-arrow-left-circle icon-btn-mosaic" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+                          </svg>
                     </button>
                     <button class="btn-derecha" id="btnRight" onclick="Next_page()">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
-                            class="bi bi-arrow-right-circle-fill icon-btn-mosaic" viewBox="0 0 16 16">
-                            <path
-                                d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-arrow-right-circle icon-btn-mosaic" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
                         </svg>
                     </button>
 

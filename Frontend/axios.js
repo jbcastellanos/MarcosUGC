@@ -1,8 +1,8 @@
 
 var pag = 1
 let marcos = [];
-var url_marcos = 'http://127.0.0.1:8000/api/marcos/v1/marcos/?ordering=-id&page=' + pag + '&page_size=3';
-const APIPREFIX = 'http://127.0.0.1:8000/api/marcos/v1'
+var url_marcos = '/api/marcos/v1/marcos/?ordering=-id&page=' + pag + '&page_size=3';
+const APIPREFIX = '/api/marcos/v1'
 let marcoSeleccionado = 0;
 
 
@@ -107,6 +107,7 @@ function Next_page() {
             btn.onclick = () => {
                 // document.getElementById('myImage').src = "marco.imagen";
                 // console.log("data:image/png;base64," + marco.imagen);
+                marcoSeleccionado = marco.id;
                 let img = new Image,
                     src = "data:image/png;base64," + marco.imagen; // insert image url here
 
@@ -174,6 +175,8 @@ function Preview_page() {
             btn.onclick = () => {
                 // document.getElementById('myImage').src = "marco.imagen";
                 // console.log("data:image/png;base64," + marco.imagen);
+                marcoSeleccionado = marco.id;
+
                 let img = new Image,
                     src = "data:image/png;base64," + marco.imagen; // insert image url here
 

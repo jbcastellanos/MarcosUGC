@@ -29,6 +29,7 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
+  gap: 0.1em;
 }
 
 .sidebar {
@@ -142,7 +143,7 @@ body {
 }
 
 #editor {
-  padding: .5em 0em 0.5em 4em;
+  padding: .5em 0em 0.5em 0em;
 }
 
 #imagesMosaic {
@@ -217,6 +218,8 @@ body {
 .icon-btn-mosaic {
   width: 4em;
   height: 4em;
+  background-color: white;
+  border-radius: 50%;
 }
 
 .btn-izquierda {
@@ -224,7 +227,7 @@ body {
   top: 40%;
   right: 95%;
   border: 0;
-  background-color: transparent;
+  background: transparent;
 }
 
 .btn-derecha {
@@ -247,6 +250,10 @@ body {
   display: none;
 }
 
+.btn-indicator-movil{
+  visibility: hidden;
+}
+
 .img-logo-experiencia {
   display: none;
 }
@@ -257,6 +264,10 @@ body {
 
 .texto-sidebar{
   display: fel;
+}
+.croppr-handle{
+  width: 30px;
+  height: 30px;
 }
 
 @media only screen and (min-width: 400px) {
@@ -285,6 +296,15 @@ body {
   .texto-sidebar>label {
     font-size: 1em;
     text-align: center;
+  }
+
+  .croppr-handle{
+    width: 15px;
+    height: 15px;
+  }
+
+  .btn-indicator-movil{
+    visibility: visible;
   }
   
   .texto-sidebar{
@@ -367,6 +387,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
   }
 
   .edicion>h2 {

@@ -22,4 +22,4 @@ urlpatterns = [
     path(baseUrl + 'api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path(baseUrl + 'api/token/refresh/', jwt_views.TokenRefreshView.as_view()),
     path(baseUrl + 'admin/', admin.site.urls),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
