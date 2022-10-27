@@ -259,6 +259,11 @@ body {
   display: fel;
 }
 
+.img-texto{
+  width: 70%;
+  padding-bottom: 2em;
+}
+
 @media only screen and (min-width: 400px) {
 
   .img_get_marco {
@@ -285,6 +290,11 @@ body {
   .texto-sidebar>label {
     font-size: 1em;
     text-align: center;
+  }
+
+  .img-texto{
+    width: 50%;
+    padding-bottom: 2em;
   }
   
   .texto-sidebar{
