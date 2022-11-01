@@ -82,7 +82,7 @@ async function downloadimagesmall(event) {
 
     var container = document.getElementById("image-wrap"); /*specific element on page*/
 
-    html2canvas(container, { allowTaint: true, scale: 4 / 5, }).then(function (canvas) {
+    html2canvas(container, { allowTaint: true, scale: 2, }).then(function (canvas) {
         let link = document.createElement("a");
         document.body.appendChild(link);
         // document.body.append(canvas)
@@ -107,7 +107,7 @@ async function downloadimagemedium(event) {
 
     var container = document.getElementById("image-wrap"); /*specific element on page*/
 
-    html2canvas(container, { allowTaint: true, scale: 4 / 3, }).then(function (canvas) {
+    html2canvas(container, { allowTaint: true, scale: 2, }).then(function (canvas) {
         let link = document.createElement("a");
         document.body.appendChild(link);
         // document.body.append(canvas)
@@ -129,7 +129,7 @@ async function downloadimagelarge(event) {
 
     var container = document.getElementById("image-wrap"); /*specific element on page*/
 
-    html2canvas(container, { allowTaint: true, scale: 1, }).then(function (canvas) {
+    html2canvas(container, { allowTaint: true, scale: 2, }).then(function (canvas) {
         let link = document.createElement("a");
         document.body.appendChild(link);
         // document.body.append(canvas)
@@ -165,12 +165,6 @@ const createRegistro = async (marcoId) => {
         .catch(error => {
 
         })
-    // axios({
-    //     method: 'post',
-    //     url: APIPREFIX + '/registros/',
-    //     data: {
-    //         marco: marcoId
-    //     }
-    // })
+  
 }
 
