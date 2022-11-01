@@ -270,6 +270,11 @@ body {
   height: 30px;
 }
 
+.img-texto{
+  width: 70%;
+  padding-bottom: 2em;
+}
+
 @media only screen and (min-width: 400px) {
 
   .img_get_marco {
@@ -293,6 +298,12 @@ body {
 }
 
 @media only screen and (min-width: 1000px) {
+
+  .img-texto{
+    width: 30%;
+    padding-bottom: 2em;
+  }
+
   .texto-sidebar>label {
     font-size: 1em;
     text-align: center;
@@ -485,6 +496,12 @@ body {
 
 
 @media only screen and (max-height: 1000px) {
+
+
+  .img-texto{
+    width: 40%;
+    padding-bottom: 2em;
+  }
 
   .sidebar {
     padding: 1.5em 2em;
